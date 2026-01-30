@@ -1,33 +1,32 @@
 const express = require("express");
 const connectDB = require("./config/db");
+
 const authRoutes = require("./routes/authRoutes");
 const faceRoutes = require("./routes/faceRoutes");
 const attendanceRoutes = require("./routes/attendenceRoutes");
-const mongoose = require("mongoose");
-
-
-
-
 
 const app = express();
+
+// Connect MongoDB
 connectDB();
 
+// Middleware
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
+// Test route
+app.get("/", (req, res) => {
+    res.send("🚀 Geo Face API Running Successfully");
+});
 
-app.get("/", (req, res) => res.send("Face Registration API Running"));
-
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/face", faceRoutes);
 app.use("/api/attendance", attendanceRoutes);
 
-
-
-const PORT = process.env.PORT || 8080;
+// Port from Render
+const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
-    console.log("Server running on port", PORT);
+    console.log(`✅ Server running on port ${PORT}`);
 });
-
-
