@@ -1,0 +1,15 @@
+node_modules/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Environment secrets
+.env
+
+# Uploads (optional if too big)
+uploads/
+
+# OS junk
+.DS_Store
