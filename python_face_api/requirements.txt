@@ -1,5 +1,6 @@
-Flask
+flask
 flask-cors
 opencv-python-headless
-numpy
-face_recognition
+face-recognition
+dlib-bin
+numpy<2
