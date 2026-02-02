@@ -26,8 +26,11 @@ def encode_face():
     file.save(file_path)
 
     img = cv2.imread(file_path)
-    rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
+    if img is None:
+        return jsonify({"error": "Invalid image"}), 400
+
+    rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     encodings = face_recognition.face_encodings(rgb)
 
     if len(encodings) == 0:
@@ -39,10 +42,7 @@ def encode_face():
     })
 
 
+# 🔥 Railway / Production compatible
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
-
-
-
-
-
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
