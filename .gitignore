@@ -12,4 +12,4 @@ __pycache__/
 uploads/
 
 # OS junk
-.DS_Store
+.DS_Storevenv/
